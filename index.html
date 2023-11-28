@@ -11,16 +11,18 @@
   <script type="text/javascript" src="js/age.js"></script>
 </head>
 <body class="bg-white">
-  <div class="d-flex justify-content-center align-items-center h-100">
+  <div class="d-flex justify-content-center align-items-center h-100 ">
     <div class="mx-2 p-2 ">
-      <div class="mx-2 p-2 ">
+      <div class="d-flex mx-2 p-2">
         <p id="ue_age"></p>
       </div>
       
-      <b> Enter Date of Birth: <input type=date id = DOB>  </b>
-      <span id = "message" style="color:red"> </span> <br><br>  
-      <button type="submit" onclick = "ageCalculatorDom()"> Calculate age </button> <br><br>
-      <h3 style="color:32A80F" id="result" align="center"></h3> 
+      <div class="d-flex flex-column mx-2 p-2">
+        <b> Enter Date of Birth: <input type=date id = DOB>  </b>
+        <span id = "message" style="color:red"> </span> <br><br>  
+        <button type="submit" onclick = "ageCalculatorDom()"> Calculate age </button> <br><br>
+        <h3 style="color:32A80F" id="result" align="center"></h3> 
+      </div>
     </div>
   </div>
 </body>

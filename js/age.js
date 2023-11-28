@@ -2,26 +2,6 @@
 $( document ).ready(function() { 
     ue_age = ageCalculator("08/17/1995");
     $('#ue_age').text("ue is " + ue_age);
-
-    // ageCalculator();
-
-    // var dob = new Date("08/17/1995");
-    // //calculate month difference from current date in time
-    // var month_diff = Date.now() - dob.getTime();
-
-    // //convert the calculated difference in date format
-    // var age_dt = new Date(month_diff); 
-
-    // //extract year from date    
-    // var year = age_dt.getUTCFullYear();
-
-    // //now calculate the age of the user
-    // var age = Math.abs(year - 1970);
-
-    // //display the calculated age
-    // $('#age').text("Ue is " + age + " years");
-    // ar = [month_diff, age_dt, year, age];
-    // $('#other').text(ar);
 });
 
 
@@ -86,31 +66,6 @@ function ageCalculatorDom() {
     ageString = age.years + " years, " + age.months + " months, and " + age.days + " days old.";
 
     return document.getElementById("result").innerHTML = ageString;
-
-
-      
-    // if ( (age.years > 0) && (age.months > 0) && (age.days > 0) )
-    //    ageString = age.years + " years, " + age.months + " months, and " + age.days + " days old.";
-    // else if ( (age.years == 0) && (age.months == 0) && (age.days > 0) )
-    //    ageString = "Only " + age.days + " days old!";
-    // //when current month and date is same as birth date and month
-    // else if ( (age.years > 0) && (age.months == 0) && (age.days == 0) )
-    //    ageString = age.years +  " years old. Happy Birthday!!";
-    // else if ( (age.years > 0) && (age.months > 0) && (age.days == 0) )
-    //    ageString = age.years + " years and " + age.months + " months old.";
-    // else if ( (age.years == 0) && (age.months > 0) && (age.days > 0) )
-    //    ageString = age.months + " months and " + age.days + " days old.";
-    // else if ( (age.years > 0) && (age.months == 0) && (age.days > 0) )
-    //    ageString = age.years + " years, and" + age.days + " days old.";
-    // else if ( (age.years == 0) && (age.months > 0) && (age.days == 0) )
-    //    ageString = age.months + " months old.";
-    // //when current date is same as dob(date of birth)
-    // else ageString = "Welcome to Earth! <br> It's first day on Earth!"; 
-
-    //display the calculated age
-    // console.log(ageString);
-    // return ageString;
-    // return document.getElementById("result").innerHTML = ageStri ng; 
 }
 
 function ageCalculator(d) {
@@ -166,26 +121,8 @@ function ageCalculator(d) {
     };
       
       
-    if ( (age.years > 0) && (age.months > 0) && (age.days > 0) )
-       ageString = age.years + " years, " + age.months + " months, and " + age.days + " days old.";
-    else if ( (age.years == 0) && (age.months == 0) && (age.days > 0) )
-       ageString = "Only " + age.days + " days old!";
-    //when current month and date is same as birth date and month
-    else if ( (age.years > 0) && (age.months == 0) && (age.days == 0) )
-       ageString = age.years +  " years old. Happy Birthday!!";
-    else if ( (age.years > 0) && (age.months > 0) && (age.days == 0) )
-       ageString = age.years + " years and " + age.months + " months old.";
-    else if ( (age.years == 0) && (age.months > 0) && (age.days > 0) )
-       ageString = age.months + " months and " + age.days + " days old.";
-    else if ( (age.years > 0) && (age.months == 0) && (age.days > 0) )
-       ageString = age.years + " years, and" + age.days + " days old.";
-    else if ( (age.years == 0) && (age.months > 0) && (age.days == 0) )
-       ageString = age.months + " months old.";
-    //when current date is same as dob(date of birth)
-    else ageString = "Welcome to Earth! <br> It's first day on Earth!"; 
-
-    //display the calculated age
-    // console.log(ageString);
+    ageString = age.years + " years, " + age.months + " months, and " + age.days + " days old.";
+    
     return ageString;
     // return document.getElementById("result").innerHTML = ageString; 
 }
