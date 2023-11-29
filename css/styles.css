@@ -1,24 +1,20 @@
 html, body {
     height: 100%;
     font-size: 1.5rem;
-}
-p#ue_age {
-    /* font-size: 60px; */
-    /* font-size: 3rem; */
-}    
-#DOB
-{
-    /* width: 20%; */
+}  
+#DOB {
     width: 50%;
 }
+
 
 @media (max-width: 1250px) {
     html, body {
         height: 100%;
         font-size: 2rem;
     }
-    p#ue_age {
-        /* font-size: 60px; */
-        /* font-size: 1rem; */
-    }    
+    div.ui-datepicker{
+        font-size:1.0rem;
+        /* width: 70%; */
+        width: auto;
+    }
 }    
