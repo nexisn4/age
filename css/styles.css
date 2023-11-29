@@ -5,16 +5,14 @@ html, body {
 #DOB {
     width: 50%;
 }
+div.ui-datepicker{
+    font-size:1.0rem;
+}
 
 
 @media (max-width: 1250px) {
-    html, body {
-        height: 100%;
-        font-size: 2rem;
-    }
-    div.ui-datepicker{
-        font-size:1.0rem;
-        /* width: 70%; */
-        width: auto;
-    }
+html, body {
+    height: 100%;
+    font-size: 2rem;
+}
 }    
