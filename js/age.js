@@ -3,18 +3,27 @@ $( document ).ready(function() {
     ue_age = ageCalculator("08/17/1995");
     $('#ue_age').text("ue is " + ue_age);
 
-    $( "#DOB" ).datepicker({ 
-      dateFormat: 'mm/dd/yy', 
-      changeYear: true,
-      yearRange: '1950:+100', 
-  }); 
+    // $( "#dob" ).datepicker({ 
+    //   dateFormat: 'mm/dd/yy', 
+    //   changeYear: true,
+    //   yearRange: '1950:+100', 
+    //   inline: true,
+    // }); 
+
+    $('.pickadate').pickadate({
+      selectMonths: true,
+      selectYears: true,
+      formatSubmit: 'mm/dd/yyyy',
+      format: 'mm/dd/yyyy',
+      selectYears: 100,
+    });
 });
 
 
 function ageCalculatorDom() {
     //collect input from HTML form and convert into date format
-    // var userinput = document.getElementById("DOB").value;
-    var userinput = $('#DOB').val();
+    // var userinput = document.getElementById("dob").value;
+    var userinput = $('#dob').val();
     //check user provide input or not
     if(userinput==null || userinput==''){
         document.getElementById("result").innerHTML = "";
