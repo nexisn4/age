@@ -8,6 +8,10 @@ html, body {
 div.ui-datepicker{
     font-size:1.0rem;
 }
+.big-margin-vertical {
+    margin-top: 200px;
+    margin-bottom: 200px;
+}
 
 
 @media (max-width: 1250px) {
@@ -15,4 +19,4 @@ html, body {
     height: 100%;
     font-size: 2rem;
 }
-}    
+}

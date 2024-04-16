@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" >
 <head>
   <title>How old</title>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
@@ -19,25 +19,24 @@
   <link rel="stylesheet" type="text/css" href="css/styles.css">
   <script type="text/javascript" src="js/age.js"></script>
 </head>
-<body class="bg-dark text-light text-center">
-  <div class="d-flex justify-content-center align-items-center h-100">
-    <div class="">
+<body class="text-light text-center">
+  <div class="bg-dark d-flex justify-content-center align-items-center">
+    <div class="big-margin-vertical">
       <div class="d-flex flex-column mx-2 p-2">
         <img class="mx-auto" id="thinking" src="https://media.tenor.com/4LB5h53V8koAAAAi/thinking.gif" alt="this slowpoke moves"  width="250" />
         <p id="ue_age"></p>        
         <p id="k8_age"></p>   
       </div>
       
-      <div class="d-flex flex-column align-items-center mt-5 p-2">
+      <div class="d-flex flex-column align-items-center mt-5 p-5">
         <p>Select birthday: </p>
-        <!-- <input class="" type="text" name="dto" id="DOB" size="16" onchange="ageCalculatorDom()"> -->
         <input type="text" id="dob" class="pickadate" 
         onchange="ageCalculatorDom()"/>
         <h4 class='mb-5' style="color:32A80F" id="result" align="center"></h3> 
 
         <label for="dateInput">Enter birthday (mmddyyyy):</label>
-        <input type="text" id="dateInput" onchange="handleInputChange(this)">
-        <h4 class='mb-5' id="output"></p>
+        <input type="text" id="dateInput" oninput="handleInputChange(this)">
+        <h4 id="output"></p>
       </div>
     </div>
   </div>

@@ -76,7 +76,6 @@ function ageCalculatorDom() {
     };
 
     ageString = age.years + " years, " + age.months + " months, and " + age.days + " days old.";
-
     return document.getElementById("result").innerHTML = ageString;
 }
 
@@ -132,10 +131,8 @@ function ageCalculator(d) {
     months: monthAge,
     days: dateAge
     };
-      
-      
+            
     ageString = age.years + " years, " + age.months + " months, and " + age.days + " days old.";
-    
     return ageString;
     // return document.getElementById("result").innerHTML = ageString; 
 }
@@ -168,7 +165,6 @@ function handleInputChange(input) {
 
     // Convert the input text to date format
     const formattedDate = convertToDate(inputText);
-
     const res = ageCalculator(formattedDate);
 
     // Display the formatted date or error message
