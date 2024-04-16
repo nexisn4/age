@@ -3,12 +3,8 @@ $( document ).ready(function() {
     ue_age = ageCalculator("08/17/1995");
     $('#ue_age').text("ue is " + ue_age);
 
-    // $( "#dob" ).datepicker({ 
-    //   dateFormat: 'mm/dd/yy', 
-    //   changeYear: true,
-    //   yearRange: '1950:+100', 
-    //   inline: true,
-    // }); 
+    k8_age = ageCalculator("03/11/1996");
+    $('#k8_age').text("k8 is " + k8_age);
 
     $('.pickadate').pickadate({
       selectMonths: true,
@@ -84,6 +80,7 @@ function ageCalculatorDom() {
     return document.getElementById("result").innerHTML = ageString;
 }
 
+
 function ageCalculator(d) {
     //collect input from HTML form and convert into date format
     var dob = new Date(d);
@@ -141,4 +138,39 @@ function ageCalculator(d) {
     
     return ageString;
     // return document.getElementById("result").innerHTML = ageString; 
+}
+
+
+function convertToDate(inputText) {
+  // Ensure the inputText is in mmddyyyy format
+  if (inputText.length === 8 && !isNaN(inputText)) {
+      const month = inputText.substring(0, 2);
+      const day = inputText.substring(2, 4);
+      const year = inputText.substring(4);
+
+      // Create a new Date object with the extracted month, day, and year
+      const date = new Date(`${month}/${day}/${year}`);
+
+      // Check if the created date is valid
+      if (!isNaN(date.getTime())) {
+          // Format the date as mm/dd/yyyy
+          const formattedDate = `${month}/${day}/${year}`;
+          return formattedDate;
+      }
+  }
+
+  return 'Invalid date format';
+}
+
+
+function handleInputChange(input) {
+    const inputText = input.value.trim();
+
+    // Convert the input text to date format
+    const formattedDate = convertToDate(inputText);
+
+    const res = ageCalculator(formattedDate);
+
+    // Display the formatted date or error message
+    document.getElementById('output').textContent = res;
 }
