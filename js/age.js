@@ -6,6 +6,9 @@ $( document ).ready(function() {
     k8_age = ageCalculator("03/11/1996");
     $('#k8_age').text("k8 is " + k8_age);
 
+    carol_age = ageCalculator("11/19/1996");
+    $('#carol_age').text("carol is " + carol_age);
+
     $('.pickadate').pickadate({
       selectMonths: true,
       selectYears: true,
