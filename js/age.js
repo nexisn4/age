@@ -12,7 +12,7 @@ $( document ).ready(function() {
     ue_anniversary = ageCalculator("05/11/2021");
     $('#ue_anniversary').text("ue is married for " + ue_anniversary);
 
-    pixie_age = ageCalculator("02/05/2022");
+    pixie_age = ageCalculator("02/07/2022");
     $('#pixie_age').text("pixie is " + pixie_age);
 
     $('.pickadate').pickadate({
