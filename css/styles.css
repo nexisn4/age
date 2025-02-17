@@ -14,7 +14,7 @@ div.ui-datepicker{
 }
 @media (max-width: 1250px) {
     html, body {
-        height: 100%;
-        font-size: 2rem;
+        /* height: 100%; */
+        /* font-size: 1rem; */
     }
 }
