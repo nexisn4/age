@@ -9,33 +9,38 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.0/jquery-ui.min.js"></script>
 
   <link rel="stylesheet" href="https://amsul.ca/pickadate.js/css/main.css">
-  <link rel="stylesheet" href="https://amsul.ca/pickadate.js/vendor/pickadate/lib/themes/default.css" id="theme_base">
-  <link rel="stylesheet" href="https://amsul.ca/pickadate.js/vendor/pickadate/lib/themes/default.date.css" id="theme_date">
-  <link rel="stylesheet" href="https://amsul.ca/pickadate.js/vendor/pickadate/lib/themes/default.time.css" id="theme_time">
-  <script src="https://amsul.ca/pickadate.js/vendor/pickadate/lib/picker.js"></script>
-  <script src="https://amsul.ca/pickadate.js/vendor/pickadate/lib/picker.date.js"></script>
-  <script src="https://amsul.ca/pickadate.js/vendor/pickadate/lib/picker.time.js"></script>
-
   <link rel="stylesheet" type="text/css" href="css/styles.css">
   <script type="text/javascript" src="js/age.js"></script>
 </head>
 <body class="text-light text-center">
   <div class="bg-dark d-flex justify-content-center align-items-center">
     <div class="big-margin-vertical">
-      <div class="d-flex flex-column mx-2 p-2">
-        <img class="mx-auto mb-5" id="thinking" src="https://media.tenor.com/4LB5h53V8koAAAAi/thinking.gif" alt="this slowpoke moves"  width="250" />
-        <p id="ue_age"></p>
-        <p id="k8_age"></p>
-        <p id="ue_anniversary"></p>
-        <p id="pixie_age"></p>
-      </div>
+      <img class="mx-auto mb-5" id="thinking" src="https://media.tenor.com/4LB5h53V8koAAAAi/thinking.gif" alt="this slowpoke moves"  width="250" />
+      <table class="table table-dark table-striped">
+        <thead class="text-dark">
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody id="data_table">
+          <!-- <tr>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr> -->
+        </tbody>
+      </table>
       
-      <div class="d-flex flex-column align-items-center mt- p-5">
-        <p>Select birthday: </p>
-        <input type="text" id="dob" class="pickadate" onchange="ageCalculatorDom()"/>
-        <h4 class='mb-5' style="color:32A80F" id="result" align="center"></h3> 
-        <label for="dateInput">Enter birthday (mmddyyyy):</label>
-        <input type="text" id="dateInput" oninput="handleInputChange(this)">
+      <div class="d-flex flex-column align-items-center mt- p-5">        
+        <label for="dateInput">Enter date (mmddyyyy):</label>
+        <input type="text" oninput="handleInputChange(this)">
         <h4 id="output"></p>
       </div>
     </div>

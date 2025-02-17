@@ -1,146 +1,47 @@
-// A $( document ).ready() block.
 $( document ).ready(function() { 
-    ue_age = ageCalculator("08/17/1995");
-    $('#ue_age').text("ue is " + ue_age);
-
-    k8_age = ageCalculator("03/11/1996");
-    $('#k8_age').text("k8 is " + k8_age);
-
-    ue_anniversary = ageCalculator("05/11/2021");
-    $('#ue_anniversary').text("ue is married for " + ue_anniversary);
-
-    pixie_age = ageCalculator("02/07/2022");
-    $('#pixie_age').text("pixie is " + pixie_age);
-
-    $('.pickadate').pickadate({
-      selectMonths: true,
-      selectYears: true,
-      formatSubmit: 'mm/dd/yyyy',
-      format: 'mm/dd/yyyy',
-      selectYears: 100,
-    });
+    insertRow("Ue", "08/17/1995");
+    insertRow("K8", "03/11/1996");
+    insertRow("Ue married", "05/11/2021");
+    insertRow("Pixie", "02/07/2022");
 });
 
 
-function ageCalculatorDom() {
-    //collect input from HTML form and convert into date format
-    // var userinput = document.getElementById("dob").value;
-    var userinput = $('#dob').val();
-    //check user provide input or not
-    if(userinput==null || userinput==''){
-        document.getElementById("result").innerHTML = "";
-        return false;
-    }    
-    var dob = new Date(userinput);
+function insertRow(name, bday) {
+  // Calculate age
+  const age = calculateAge(bday);
 
-    //extract the year, month, and date from user date input
-    var dobYear = dob.getYear();
-    var dobMonth = dob.getMonth();
-    var dobDate = dob.getDate();
-    
-    //get the current date from the system
-    var now = new Date();
-    //extract the year, month, and date from current date
-    var currentYear = now.getYear();
-    var currentMonth = now.getMonth();
-    var currentDate = now.getDate();
-    
-    //declare a variable to collect the age in year, month, and days
-    var age = {};
-    var ageString = "";
-  
-    //get years
-    yearAge = currentYear - dobYear;
-    
-    //get months
-    if (currentMonth >= dobMonth)
-      //get months when current month is greater
-      var monthAge = currentMonth - dobMonth;
-    else {
-      yearAge--;
-      var monthAge = 12 + currentMonth - dobMonth;
-    }
+  const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+        <td>${name}</td>
+        <td>${bday}</td>
+        <td>${age}</td>
+    `;
 
-    //get days
-    if (currentDate >= dobDate)
-      //get days when the current date is greater
-      var dateAge = currentDate - dobDate;
-    else {
-      monthAge--;
-      var dateAge = 31 + currentDate - dobDate;
+    // Append the new row to the table body with id 'data_table'
+    document.getElementById('data_table').appendChild(newRow);
 
-      if (monthAge < 0) {
-        monthAge = 11;
-        yearAge--;
-      }
-    }
-    //group the age in a single variable
-    age = {
-    years: yearAge,
-    months: monthAge,
-    days: dateAge
-    };
-
-    ageString = age.years + " years, " + age.months + " months, and " + age.days + " days old.";
-    return document.getElementById("result").innerHTML = ageString;
 }
 
 
-function ageCalculator(d) {
-    //collect input from HTML form and convert into date format
-    var dob = new Date(d);
+function calculateAge(bday) {
+  const dob = new Date(bday);
+  const now = new Date();
+  let yearAge = now.getFullYear() - dob.getFullYear();
+  let monthAge = now.getMonth() - dob.getMonth();
+  let dayAge = now.getDate() - dob.getDate();
 
-    //extract the year, month, and date from user date input
-    var dobYear = dob.getYear();
-    var dobMonth = dob.getMonth();
-    var dobDate = dob.getDate();
-    
-    //get the current date from the system
-    var now = new Date();
-    //extract the year, month, and date from current date
-    var currentYear = now.getYear();
-    var currentMonth = now.getMonth();
-    var currentDate = now.getDate();
-    
-    //declare a variable to collect the age in year, month, and days
-    var age = {};
-    var ageString = "";
-  
-    //get years
-    yearAge = currentYear - dobYear;
-    
-    //get months
-    if (currentMonth >= dobMonth)
-      //get months when current month is greater
-      var monthAge = currentMonth - dobMonth;
-    else {
+  if (monthAge < 0 || (monthAge === 0 && dayAge < 0)) {
       yearAge--;
-      var monthAge = 12 + currentMonth - dobMonth;
-    }
-
-    //get days
-    if (currentDate >= dobDate)
-      //get days when the current date is greater
-      var dateAge = currentDate - dobDate;
-    else {
+      monthAge += 12;
+  }
+  
+  if (dayAge < 0) {
+      const daysInMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+      dayAge += daysInMonth;
       monthAge--;
-      var dateAge = 31 + currentDate - dobDate;
+  }
 
-      if (monthAge < 0) {
-        monthAge = 11;
-        yearAge--;
-      }
-    }
-    //group the age in a single variable
-    age = {
-    years: yearAge,
-    months: monthAge,
-    days: dateAge
-    };
-            
-    ageString = age.years + " years, " + age.months + " months, and " + age.days + " days old.";
-    return ageString;
-    // return document.getElementById("result").innerHTML = ageString; 
+  return `${yearAge} Years, ${monthAge} Months, ${dayAge} Days`;
 }
 
 
@@ -162,7 +63,7 @@ function convertToDate(inputText) {
       }
   }
 
-  return 'Invalid date format';
+  return -1;
 }
 
 
@@ -171,7 +72,12 @@ function handleInputChange(input) {
 
     // Convert the input text to date format
     const formattedDate = convertToDate(inputText);
-    const res = ageCalculator(formattedDate);
+    // console.log(formattedDate);
+    if (formattedDate == -1) {
+      document.getElementById('output').textContent = "";
+      return;
+    }
+    const res = calculateAge(formattedDate);
 
     // Display the formatted date or error message
     document.getElementById('output').textContent = res;
