@@ -4,18 +4,18 @@
   <title>How old</title>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css">
+  <link rel="stylesheet" href="https://amsul.ca/pickadate.js/css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.0/jquery-ui.min.js"></script>
 
-  <link rel="stylesheet" href="https://amsul.ca/pickadate.js/css/main.css">
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
   <script type="text/javascript" src="js/age.js"></script>
 </head>
 <body class="text-light text-center bg-dark">
   <div class="bg-dark d-flex justify-content-center align-items-center">
     <div class="big-margin-vertical">
-      <img class="mx-auto mb-5" id="thinking" src="https://media.tenor.com/4LB5h53V8koAAAAi/thinking.gif" alt="this slowpoke moves"  width="250" />
+      <img class="mx-auto mb-5" id="thinking" src="assets/thinking.gif" alt="this slowpoke moves"  width="250" />
       <table class="table table-dark table-striped">
         <thead class="text-dark">
           <tr>
@@ -41,7 +41,7 @@
       <div class="d-flex flex-column align-items-center pt-5">        
         <label for="dateInput">Enter date (mmddyyyy):</label>
         <input type="text" oninput="handleInputChange(this)">
-        <h4 id="output"></p>
+        <h4 id="dateOutput"></p>
       </div>
     </div>
   </div>
