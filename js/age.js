@@ -1,9 +1,22 @@
 $(document).ready(function() { 
+  // add rows to table
   insertRow("Ue", "08/17/1995");
   insertRow("K8", "03/11/1996");
   insertRow("Married", "05/11/2021");
   insertRow("Pixie", "02/07/2022");
+
+  loadCalc();
 });
+
+function loadCalc(){
+  // load date calculation input
+  const savedValue = localStorage.getItem('dateInput');
+  if (savedValue) {
+    const inputElement = document.getElementById('dateInput');    
+    inputElement.value = savedValue;
+    handleInputChange(inputElement);
+  }     
+}
 
 function insertRow(name, d) {
   // Calculate age
@@ -83,8 +96,11 @@ function convertToDate(inputText) {
 }
 
 function handleInputChange(input) {
-  const inputText = input.value.trim();
+  // save value 
+  localStorage.setItem('dateInput', input.value);
+
   // Convert the input text to date format
+  const inputText = input.value.trim();
   const formattedDate = convertToDate(inputText);
   
   if (formattedDate == -1) {
@@ -92,8 +108,13 @@ function handleInputChange(input) {
     return;
   }
   
-  const res = calculateAge(formattedDate);
-
   // Display the formatted date or error message
+  const res = calculateAge(formattedDate);
   document.getElementById('dateOutput').textContent = res;
+}
+
+function clearInputValue() {
+  $("#dateInput").val("");
+  localStorage.setItem('dateInput', "");
+  $("#dateOutput").text("");
 }
