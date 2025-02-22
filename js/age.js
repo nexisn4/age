@@ -4,6 +4,7 @@ $(document).ready(function() {
   insertRow("K8", "03/11/1996");
   insertRow("Married", "05/11/2021");
   insertRow("Pixie", "02/07/2022");
+  insertRow("MSFT 410c", "12/18/2026");
 
   loadCalc();
 });
