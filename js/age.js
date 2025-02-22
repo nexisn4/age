@@ -20,16 +20,15 @@ function loadCalc(){
 }
 
 function insertRow(name, d) {
-  // Calculate age
   const age = calculateAge(d);
-
   const newRow = document.createElement('tr');
   newRow.innerHTML = `
+    <tr>
     <td>${name}</td>
     <td>${d}</td>
     <td>${age}</td>
+    </tr>
   `;
-
   // Append the new row to the table body with id 'data_table'
   document.getElementById('data_table').appendChild(newRow);
 }
