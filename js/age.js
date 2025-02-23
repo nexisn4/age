@@ -3,9 +3,10 @@ $(document).ready(function() {
   insertRow("K8", "03/11/1996");
   insertRow("Married", "05/11/2021");
   insertRow("Pixie", "02/07/2022");
-  insertRow("Work", "06/01/2016"); 
-  insertRow("AGI", "06/01/2024");  
-  insertRow("MSFTc", "12/18/2026");
+
+  insertRowHidden("MSFTc", "12/18/2026");
+  insertRowHidden("Work", "06/01/2016"); 
+  insertRowHidden("AGI", "06/01/2024");  
   
   insertRowHidden("M", "08/15/1964");
   insertRowHidden("H", "09/04/1961");
