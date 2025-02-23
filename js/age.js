@@ -1,12 +1,22 @@
-$(document).ready(function() { 
-  // add rows to table
+$(document).ready(function() {   
   insertRow("Ue", "08/17/1995");
   insertRow("K8", "03/11/1996");
   insertRow("Married", "05/11/2021");
   insertRow("Pixie", "02/07/2022");
-  insertRow("MSFT 410c", "12/18/2026");
+  insertRow("Work", "06/01/2016"); 
+  insertRow("AGI", "06/01/2024");  
+  insertRow("MSFTc", "12/18/2026");
+  
+  insertRowHidden("M", "08/15/1964");
+  insertRowHidden("H", "09/04/1961");
+  insertRowHidden("S", "02/13/1961");
+  insertRowHidden("G", "01/11/1960");
 
   loadCalc();
+
+  $(".mytable").on("click", "tr", function(){
+    $('tr.hidden-row').toggle();
+  });
 });
 
 function loadCalc(){
@@ -21,13 +31,29 @@ function loadCalc(){
 
 function insertRow(name, d) {
   const age = calculateAge(d);
-  const newRow = document.createElement('tr');
+  const newRow = document.createElement('tr');  // Create a new <tr> element
+  
+  // Set the innerHTML of the new row, without wrapping it in another <tr>
   newRow.innerHTML = `
-    <tr>
     <td>${name}</td>
     <td>${d}</td>
     <td>${age}</td>
-    </tr>
+  `;
+  
+  // Append the new row to the table body with id 'data_table'
+  document.getElementById('data_table').appendChild(newRow);
+}
+
+
+function insertRowHidden(name, d) {
+  const age = calculateAge(d);
+  const newRow = document.createElement('tr');
+  newRow.style.display = 'none';
+  newRow.classList.add('hidden-row'); // Add the hidden-row class directly
+  newRow.innerHTML = `
+    <td>${name}</td>
+    <td>${d}</td>
+    <td>${age}</td>
   `;
   // Append the new row to the table body with id 'data_table'
   document.getElementById('data_table').appendChild(newRow);
@@ -53,7 +79,7 @@ function calculateAge(d) {
       monthDiff--;
     }
 
-    return `${yearDiff} Years, ${monthDiff} Months, ${dayDiff} Days Old`;
+    return `${yearDiff} Years, ${monthDiff} Months, ${dayDiff} Days`;
   } else { // If the input date is in the future, calculate time until that date
     yearDiff = inputDate.getFullYear() - now.getFullYear();
     monthDiff = inputDate.getMonth() - now.getMonth();
@@ -70,7 +96,7 @@ function calculateAge(d) {
       monthDiff--;
     }
 
-    return `${yearDiff} Years, ${monthDiff} Months, ${dayDiff} Days Remaining`;
+    return `${yearDiff} Years, ${monthDiff} Months, ${dayDiff} Days Left`;
   }
 }
 

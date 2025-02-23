@@ -27,3 +27,59 @@ input {
 .input-group {
   width:400px;
 }
+
+
+/* table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #2e2e2e;
+  color: #ddd;
+  border: 1px solid #444;
+}
+
+thead {
+  background-color: #3a3a3a;
+}
+
+th {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  background-color: var(--bs-secondary);
+  border-bottom: 2px solid #444;
+  color: #fff;
+}
+
+tr {
+  border-bottom: 1px solid #444;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #3a3a3a;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #2e2e2e;
+}
+
+td {
+  padding: 10px;
+  text-align: left;
+}
+
+td, th {
+  border-right: 1px solid #444;
+}
+
+td:last-child, th:last-child {
+  border-right: none;
+}
+
+table tr.hidden-row{
+  background-color: #3b8660
+}
+
+table tr.hidden-row:nth-child(odd){
+  background-color: #1d6340
+}
