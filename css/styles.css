@@ -1,20 +1,23 @@
 html, body {
-    height: 100%;
-    font-size: 1.5rem;
-}  
-#DOB {
-    width: 50%;
+  height: 100%;
+  font-size: 1.3rem;
+  margin: 5%;
 }
-div.ui-datepicker{
-    font-size:1.0rem;
+
+body {
+  display: flex;
+  flex-direction: column; /* Allow content to stack vertically */
+  justify-content: flex-start; /* Align content at the top */
+  align-items: center;
+  background-color: #121212;
+  color: white;
+  padding-top: 20%; /* Adds some blank space at the top */
 }
-.big-margin-vertical {
-    margin-top: 200px;
-    margin-bottom: 200px;
+
+tbody tr {
+  text-align: left;
 }
-/* @media (max-width: 1250px) {
-    html, body {
-        height: 100%;
-        font-size: 1rem;
-    }
-} */
+
+input {
+  font-size: 1.4rem !important;
+}
