@@ -11,7 +11,7 @@ body {
   align-items: center;
   background-color: #121212;
   color: white;
-  padding-top: 20%; /* Adds some blank space at the top */
+  padding-top: 5%; /* Adds some blank space at the top */
 }
 
 tbody tr {
