@@ -1,18 +1,16 @@
 $(document).ready(function() {   
-  insertRow("Ue", "08/17/1995");
-  insertRow("K8", "03/11/1996");
+  insertRow("Ue &#x1F451", "08/17/1995");
+  insertRow("K8 &#128157", "03/11/1996");
   insertRow("Married", "05/11/2021");
   insertRow("Pixie", "02/07/2022");
-
-  insertRowHidden("MSFTc", "12/18/2026");
-  insertRowHidden("Work", "06/01/2016"); 
-  insertRowHidden("AGI", "06/01/2024");  
-  
   insertRowHidden("M", "08/15/1964");
   insertRowHidden("H", "09/04/1961");
   insertRowHidden("S", "02/13/1961");
   insertRowHidden("G", "01/11/1960");
-
+  insertRowHidden("Work", "06/01/2016"); 
+  insertRowHidden("AGI", "06/01/2024");  
+  insertRowHidden("MSFTc", "12/18/2026");
+  
   loadCalc();
 
   $(".mytable").on("click", "tr", function(){
@@ -80,7 +78,7 @@ function calculateAge(d) {
       monthDiff--;
     }
 
-    return `${yearDiff} Years, ${monthDiff} Months, ${dayDiff} Days`;
+    return `${yearDiff} yr, ${monthDiff} mo, ${dayDiff} days`;
   } else { // If the input date is in the future, calculate time until that date
     yearDiff = inputDate.getFullYear() - now.getFullYear();
     monthDiff = inputDate.getMonth() - now.getMonth();
@@ -97,7 +95,7 @@ function calculateAge(d) {
       monthDiff--;
     }
 
-    return `${yearDiff} Years, ${monthDiff} Months, ${dayDiff} Days Left`;
+    return `${yearDiff} yr, ${monthDiff} mo, ${dayDiff} days left`;
   }
 }
 

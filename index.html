@@ -1,45 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>How old</title>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha1/css/bootstrap.min.css">  
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/age.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How old</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/age.js"></script>
 </head>
-
-<body class="text-light text-center bg-dark">
-  <div class="d-flex flex-column justify-content-center align-items-center">
-      <img class="mx-auto mb-5" id="thinking" src="assets/thinking.gif" alt="this slowpoke moves"  width="250" />
-      
-      <table class="mytable mb-5">
-        <thead class="thead-light">
-          <tr class="table-primary">
-            <th><b>Name</b></th>
-            <th><b>Date</b></th>
-            <th><b>Duration</b></th>
-          </tr>
-        </thead>
-        <tbody id="data_table" class="">
-          <!-- <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr> -->
-        </tbody>
-      </table>
-      
-      <p class="m-1"><b>Enter date (mmddyyyy):</b></p>
-      <div class="input-group mb-1">
-        <input type="number" class="form-control" id="dateInput" oninput="handleInputChange(this)">
-        <button class="btn btn-primary btn-lg" type="button" onclick="clearInputValue()">Clear</button>
-      </div>
-      <p id="dateOutput" class="m-0"></p>
-  </div>
+<body>
+    <div class="container">
+        <img id="thinking" src="assets/thinking.gif" alt="this slowpoke moves">
+        
+        <table class="mytable">
+            <thead class="thead-light">
+                <tr class="table-primary">
+                    <th><b>Name</b></th>
+                    <th><b>Date</b></th>
+                    <th><b>Duration</b></th>
+                </tr>
+            </thead>
+            <tbody id="data_table">
+                <!-- 
+                <tr>
+                    <td>sp sample</td>
+                    <td>88/88/8888</td>
+                    <td>20 yr, 5 mo, 3 days remaining</td>
+                </tr> 
+                -->
+            </tbody>
+        </table>
+        
+        <p><b>Enter date (mmddyyyy):</b></p>
+        <div class="input-group">
+            <input type="number" id="dateInput" oninput="handleInputChange(this)">
+            <button type="button" onclick="clearInputValue()">Clear</button>
+        </div>
+        <p id="dateOutput"></p>
+    </div>
 </body>
 </html>
