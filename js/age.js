@@ -1,8 +1,9 @@
 $(document).ready(function() {   
-  insertRow("Ue &#x1F451", "08/17/1995");
+  insertRow("Ue &#x1F451", "08/17/1995", 1);
   insertRow("K8 &#128157", "03/11/1996");
   insertRow("Married", "05/11/2021");
   insertRow("Pixie", "02/07/2022");
+  insertRow("Amherst", "05/01/2024");
   insertRowHidden("M", "08/15/1964");
   insertRowHidden("H", "09/04/1961");
   insertRowHidden("S", "02/13/1961");
@@ -13,7 +14,7 @@ $(document).ready(function() {
   
   loadCalc();
 
-  $(".mytable").on("click", "tr", function(){
+  $("#btn_toggle_hidden").on("click", function(){
     $('tr.hidden-row').toggle();
   });
 });
@@ -28,13 +29,19 @@ function loadCalc(){
   }     
 }
 
-function insertRow(name, d) {
+function insertRow(name, d, flag_special) {
+  var idv = '';
+  if (typeof flag_special === 'undefined') {
+  } else {    
+    idv = 'id="btn_toggle_hidden"';
+  }
+
   const age = calculateAge(d);
   const newRow = document.createElement('tr');  // Create a new <tr> element
-  
+
   // Set the innerHTML of the new row, without wrapping it in another <tr>
   newRow.innerHTML = `
-    <td>${name}</td>
+    <td ${idv}>${name}</td>
     <td>${d}</td>
     <td>${age}</td>
   `;
@@ -78,7 +85,7 @@ function calculateAge(d) {
       monthDiff--;
     }
 
-    return `${yearDiff} yr, ${monthDiff} mo, ${dayDiff} days`;
+    return `${yearDiff} yr ${monthDiff} mo ${dayDiff} days`;
   } else { // If the input date is in the future, calculate time until that date
     yearDiff = inputDate.getFullYear() - now.getFullYear();
     monthDiff = inputDate.getMonth() - now.getMonth();
@@ -95,7 +102,7 @@ function calculateAge(d) {
       monthDiff--;
     }
 
-    return `${yearDiff} yr, ${monthDiff} mo, ${dayDiff} days left`;
+    return `${yearDiff} yr ${monthDiff} mo ${dayDiff} days left`;
   }
 }
 
