@@ -12,21 +12,104 @@ $(document).ready(function() {
   insertRowHidden("AGI", "06/01/2024");  
   insertRowHidden("MSFTc", "12/18/2026");
   
-  loadCalc();
-
   $("#btn_toggle_hidden").on("click", function(){
     $('tr.hidden-row').toggle();
   });
+
+  $('.togglable').toggle();
+
 });
 
-function loadCalc(){
-  // load date calculation input
-  const savedValue = localStorage.getItem('dateInput');
-  if (savedValue) {
-    const inputElement = document.getElementById('dateInput');    
-    inputElement.value = savedValue;
-    handleInputChange(inputElement);
-  }     
+function toggleTogglable(){
+  $('.togglable').toggle();
+}
+
+async function fetchStockPrice(symbol) {
+  // $('#percInitialValue').val(75);   return;
+
+  var key = "e877033553ec42a2a42e316339601936";
+  var url = `http://api.marketstack.com/v2/eod?access_key=${key}&symbols=${symbol}`;
+
+  try {
+    // Fetch data from the API
+    let response = await fetch(url);
+    let data = await response.json();
+
+    // Extract stock price (close price for example)
+    let stockPrice = data.data[0].close;
+
+    // Print the stock price
+    // console.log(`The stock price of ${symbol} is: $${stockPrice}`);
+    $('#percInitialValue').val(stockPrice);
+  } catch (error) {
+    // console.error('Error fetching the stock price:', error);
+    $('#percInitialValue').val("-1");
+  }
+}
+
+function generateGraph() {
+  return;
+
+  const initialValue = parseFloat(document.getElementById('percInitialValue').value);
+  const initialValueHalf = initialValue / 2;
+  const canvas = document.getElementById('changeGraph');
+  const ctx = canvas.getContext('2d');
+
+  // Validate the input value
+  if (isNaN(initialValue) || initialValue <= 0) {
+      return; // Exit if initial value is invalid
+  }
+
+  // Prepare data for the graph (initial value to 5x initial value)
+  let xValues = [];
+  let yValues = [];
+
+  var graphNumPoints = 10;
+  var maxPrice = initialValue * 7;
+  var gap = maxPrice / graphNumPoints;
+  for (let i = 0; i <= graphNumPoints; i++) {
+      const newX = i * gap;
+      const newY = ((newX - initialValue) / initialValue) * 100;
+      
+      xValues.push(newX);
+      yValues.push(newY);
+  }
+
+  // Clear the previous chart if it exists
+  if (window.chartInstance) {
+      window.chartInstance.destroy();
+  }
+
+  // Create new chart with the updated data
+  window.chartInstance = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: xValues, // X-axis values (1x, 2x, ..., 5x)
+          datasets: [{
+              label: 'Percentage Change',
+              data: yValues, // Y-axis values (percent change)
+              borderColor: 'rgba(75, 192, 192, 1)',
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              fill: true
+          }]
+      },
+      options: {
+          scales: {
+              x: {
+                  title: {
+                      display: true,
+                      text: 'Stock Price ($)'
+                  }
+              },
+              y: {
+                  title: {
+                      display: true,
+                      text: 'Percentage Change (%)'
+                  }
+              }
+          }
+      }
+  });
 }
 
 function insertRow(name, d, flag_special) {
@@ -49,7 +132,6 @@ function insertRow(name, d, flag_special) {
   // Append the new row to the table body with id 'data_table'
   document.getElementById('data_table').appendChild(newRow);
 }
-
 
 function insertRowHidden(name, d) {
   const age = calculateAge(d);
@@ -128,9 +210,6 @@ function convertToDate(inputText) {
 }
 
 function handleInputChange(input) {
-  // save value 
-  localStorage.setItem('dateInput', input.value);
-
   // Convert the input text to date format
   const inputText = input.value.trim();
   const formattedDate = convertToDate(inputText);
@@ -147,6 +226,18 @@ function handleInputChange(input) {
 
 function clearInputValue() {
   $("#dateInput").val("");
-  localStorage.setItem('dateInput', "");
   $("#dateOutput").text("");
+}
+
+// Function to calculate percentage change automatically on input change
+function calculatePercentageChange() {
+    var initial = parseFloat($('#percInitialValue').val());
+    var final = parseFloat($('#percFinalValue').val());
+
+    if (!isNaN(initial) && !isNaN(final) && initial !== 0) {
+        var percentageChange = ((final - initial) / initial) * 100;
+        $('#percentageChangeResult').text("Percentage Change: " + percentageChange.toFixed(2) + "%");
+    } else {
+        $('#percentageChangeResult').text("Please enter valid numbers.");
+    }
 }

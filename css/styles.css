@@ -87,3 +87,9 @@ button {
 p {
   margin: 0 0;
 }
+
+.input-group-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
