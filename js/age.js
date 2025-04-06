@@ -1,3 +1,5 @@
+var debug = false;
+
 $(document).ready(function() {   
   insertRow("Ue &#x1F451", "08/17/1995", 1);
   insertRow("K8 &#128157", "03/11/1996");
@@ -16,21 +18,53 @@ $(document).ready(function() {
     $('tr.hidden-row').toggle();
   });
 
-  $('.togglable').toggle();
-
   // allow graph
   // add onchange event to percInitialValue, percFinalValue, btnFillPercInitialValue
   // add chart.js in html
 
+  // hide extra on load
+  toggleExtra();
+
+  if (debug) {
+    toggleExtra();
+
+      // make divs different color backgrounds
+    colorDivsUnique([
+      "container",
+      "container-content",
+      "input-group",
+      "extra",
+      "input-group-col",
+    ])
+  }
 });
 
-function toggleTogglable(){
-  $('.togglable').toggle();
+function colorDivsUnique(classNames) {
+  const usedColors = new Set();
+
+  classNames.forEach(className => {
+    let color;
+    do {
+      color = '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, '0');
+    } while (usedColors.has(color));
+    
+    usedColors.add(color);
+    $('.' + className).css('background-color', color);
+  });
+}
+
+
+function toggleExtra(){
+  $('.extra').toggle();
 }
 
 async function fetchStockPrice(symbol) {
-  // $('#percInitialValue').val(75);   return;
-
+  if (debug) {
+    $('#percInitialValue').val(100);   
+    calculatePercentageChange();
+    return;
+  }
+  
   var key = "e877033553ec42a2a42e316339601936";
   var url = `http://api.marketstack.com/v2/eod?access_key=${key}&symbols=${symbol}`;
 
@@ -49,6 +83,8 @@ async function fetchStockPrice(symbol) {
     // console.error('Error fetching the stock price:', error);
     $('#percInitialValue').val("-1");
   }
+
+  calculatePercentageChange();
 }
 
 function generateGraph() {
@@ -141,6 +177,7 @@ function insertRowHidden(name, d) {
   const age = calculateAge(d);
   const newRow = document.createElement('tr');
   newRow.style.display = 'none';
+  // newRow.style.visibility = 'hidden';
   newRow.classList.add('hidden-row'); // Add the hidden-row class directly
   newRow.innerHTML = `
     <td>${name}</td>
@@ -171,7 +208,7 @@ function calculateAge(d) {
       monthDiff--;
     }
 
-    return `${yearDiff} yr ${monthDiff} mo ${dayDiff} days`;
+    return `${yearDiff} yr ${monthDiff} mo ${dayDiff} days     `;
   } else { // If the input date is in the future, calculate time until that date
     yearDiff = inputDate.getFullYear() - now.getFullYear();
     monthDiff = inputDate.getMonth() - now.getMonth();

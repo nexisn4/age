@@ -19,11 +19,12 @@ div.container-content {
   /* background-color: #333333; */
   /* background-color: pink; */
   /* border: 1px solid #444444; */
-  padding: 20px 0px;
+  /* padding: 20px 0px; */
   /* border-radius: 10px; */
+  /* width: 100%; */
 }
 
-div.togglable {
+div.extra {
   /* margin: 50px; */
   /* padding: 50px; */
   /* background-color: orange; */
@@ -33,11 +34,14 @@ div.togglable {
 
 /* table */
 table.mytable {
-  width: auto;
+  /* width: auto; */
   border-collapse: collapse;
   margin: 20px 0;
   text-align: left;
   color: #FFFFFF;
+  /* table-layout: fixed; */
+  /* width: 120%; */
+  white-space: pre;
 }
 
 table.mytable th, table.mytable td {
