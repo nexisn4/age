@@ -7,9 +7,27 @@ div.container {
   display: grid;
   place-items: center;
   background-color: #333333;
+  /* background-color: red; */
   border: 1px solid #444444;
-  padding: 20px 0px;
   border-radius: 10px;
+  padding: 20px 0px;
+}
+
+div.container-content {
+  display: grid;
+  place-items: center;
+  /* background-color: #333333; */
+  /* background-color: pink; */
+  /* border: 1px solid #444444; */
+  padding: 20px 0px;
+  /* border-radius: 10px; */
+}
+
+div.togglable {
+  /* margin: 50px; */
+  /* padding: 50px; */
+  /* background-color: orange; */
+  width: 100%;
 }
 
 

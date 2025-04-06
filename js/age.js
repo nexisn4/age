@@ -18,6 +18,10 @@ $(document).ready(function() {
 
   $('.togglable').toggle();
 
+  // allow graph
+  // add onchange event to percInitialValue, percFinalValue, btnFillPercInitialValue
+  // add chart.js in html
+
 });
 
 function toggleTogglable(){
@@ -48,7 +52,7 @@ async function fetchStockPrice(symbol) {
 }
 
 function generateGraph() {
-  return;
+  // return;
 
   const initialValue = parseFloat(document.getElementById('percInitialValue').value);
   const initialValueHalf = initialValue / 2;

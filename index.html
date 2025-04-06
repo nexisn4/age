@@ -13,45 +13,50 @@
 </head>
 <body>
     <div class="container">
-        <img id="thinking" src="assets/thinking.gif" alt="this slowpoke moves">
-        
-        <table class="mytable">
-            <thead class="thead-light">
-                <tr class="table-primary">
-                    <th><b>Name</b></th>
-                    <th><b>Date</b></th>
-                    <th><b>Duration</b></th>
-                </tr>
-            </thead>
-            <tbody id="data_table">
-                <!-- Data will be dynamically inserted here -->
-            </tbody>
-        </table>
-        
-        <p><b>Enter date (mmddyyyy):</b></p>
-        <div class="input-group">
-            <input type="number" id="dateInput" oninput="handleInputChange(this)">
-            <button type="button" onclick="clearInputValue()">Clear</button>
-        </div>
-        <p id="dateOutput"></p>        
+        <div class="container-content">
 
-        <button class="" onclick="toggleTogglable();">Show Extra</button>
-
-        <!-- Percentage Change Calculator Section -->
-        <div class="togglable">
-          <div class="input-group-col">
-            <h3>Percentage Change Calculator</h3>
-            <button type="button" onclick="fetchStockPrice('PLTR'); generateGraph();">FillP</button>
-
-            <label for="percInitialValue">Initial Value:</label>
-            <input type="number" id="percInitialValue" class="form-control mb-3" oninput="calculatePercentageChange(); generateGraph();">
-
-            <label for="percFinalValue">Final Value:</label>              
-            <input type="number" id="percFinalValue" class="form-control mb-3" oninput="calculatePercentageChange();">
-
-            <p id="percentageChangeResult" class="mt-3"></p>
-            <canvas id="changeGraph" width="400" height="200"></canvas>
-          </div>
+            <img id="thinking" src="assets/thinking.gif" alt="this slowpoke moves">
+            
+            <table class="mytable">
+                <thead class="thead-light">
+                    <tr class="table-primary">
+                        <th><b>Name</b></th>
+                        <th><b>Date</b></th>
+                        <th><b>Duration</b></th>
+                    </tr>
+                </thead>
+                <tbody id="data_table">
+                    <!-- Data will be dynamically inserted here -->
+                </tbody>
+            </table>
+            
+            <p><b>Enter date (mmddyyyy):</b></p>
+            <div class="input-group">
+                <input type="number" id="dateInput" oninput="handleInputChange(this)">
+                <button type="button" onclick="clearInputValue()">Clear</button>
+            </div>
+            <p id="dateOutput"></p>        
+            
+            <button class="" onclick="toggleTogglable();">Show Extra</button>
+            
+            <!-- Percentage Change Calculator Section -->
+            <div class="togglable">
+            <hr>
+                <div class="input-group-col">
+                    <h3>Percentage Change Calculator</h3>
+                    <button type="button" id="btnFillPercInitialValue" onclick="fetchStockPrice('PLTR');">FillP</button>
+                    
+                    <label for="percInitialValue">Initial Value:</label>
+                    <input type="number" id="percInitialValue" class="form-control mb-3" oninput="calculatePercentageChange();">
+                    
+                    <label for="percFinalValue">Final Value:</label>              
+                    <input type="number" id="percFinalValue" class="form-control mb-3" oninput="calculatePercentageChange();">
+                    
+                    <p id="percentageChangeResult" class="mt-3"></p>
+                    <!-- <canvas id="changeGraph" width="400" height="200"></canvas> -->
+                    <canvas id="changeGraph"></canvas>
+                </div>
+            </div>
         </div>
     </div>
 </body>
