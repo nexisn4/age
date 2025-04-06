@@ -66,7 +66,7 @@ async function fetchStockPrice(symbol) {
   }
   
   var key = "e877033553ec42a2a42e316339601936";
-  var url = `http://api.marketstack.com/v2/eod?access_key=${key}&symbols=${symbol}`;
+  var url = `https://api.marketstack.com/v2/eod?access_key=${key}&symbols=${symbol}`;
 
   try {
     // Fetch data from the API
