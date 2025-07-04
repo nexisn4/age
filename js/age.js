@@ -12,7 +12,8 @@ $(document).ready(function() {
   insertRowHidden("G", "01/11/1960");
   insertRowHidden("Work", "06/01/2016"); 
   insertRowHidden("AGI", "06/01/2024");  
-  insertRowHidden("MSFTc", "12/18/2026");
+  insertRowHidden("MSFT 410c", "12/18/2026");
+  insertRowHidden("GOOG 170c", "12/17/2027");
   
   $("#btn_toggle_hidden").on("click", function(){
     $('tr.hidden-row').toggle();
