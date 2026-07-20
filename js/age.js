@@ -5,7 +5,8 @@ $(document).ready(function() {
   insertRow("K8 &#128157", "03/11/1996");
   insertRow("Married", "05/11/2021");
   insertRow("Pixie", "02/07/2022");
-  insertRow("Amherst", "05/01/2024");
+  // insertRow("Amherst", "05/01/2024");
+  insertRow("Davis", "03/01/2026");
   insertRowHidden("M", "08/15/1964");
   insertRowHidden("H", "09/04/1961");
   insertRowHidden("S", "02/13/1961");
